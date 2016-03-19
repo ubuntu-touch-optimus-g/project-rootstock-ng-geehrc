@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir s/s -p
+simg2img $1 s/system.img.raw
+sudo mount -t ext4 -o loop s/system.img.raw s/s
+sudo make_ext4fs -l 140M s/system.img s/s/ >/dev/null 2>&1
+sudo umount s/s
